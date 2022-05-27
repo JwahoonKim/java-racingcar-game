@@ -1,13 +1,12 @@
 package domain;
 
-import domain.Stadium;
 import view.InputView;
 import view.ResultView;
 
-public class Race {
-    private Stadium st;
+public class RacingGame {
+    private Cars cars;
     private int count;
-    
+
     public void play() throws Exception {
         init();
 
@@ -16,11 +15,11 @@ public class Race {
         while(count > 0) {
             Thread.sleep(500);
             count--;
-            st.race();
-            ResultView.printStatus(st.getCars());
+            cars.race();
+            ResultView.printStatus(cars.getCars());
         }
 
-        ResultView.printResult(st);
+        ResultView.printResult(cars);
     }
 
     private void init() {
@@ -31,7 +30,7 @@ public class Race {
     private void setStadium() {
         InputView.startMessage();
         String players = InputView.inputPlayers();
-        st = new Stadium(players);
+        cars = new Cars(players);
     }
 
     private void setCount() {
